@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Web API!</title>
+</head>
+<body>
+    <div id="body">
+        <span>Lista de contatos</span>
+        <ul id="contacts"></ul>
+
+        <form id="saveContactForm" method="post">
+            <h3>Create a new Contact</h3>
+            <p>
+                <label for="contactId">Contact Id:</label>
+                <input type="text" name="Id" />
+            </p>
+            <p>
+                <label for="contactName">Contact Name:</label>
+                <input type="text" name="Name" />
+            </p>
+            <input type="button" id="saveContact" value="Save" />
+        </form>
+    </div>
+
+
+</body>
+</html>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            debugger;
+            $.getJSON('/api/contact', function (contactsJsonPayload) {
+                debugger;
+                $(contactsJsonPayload).each(function (i, item) {
+                    debugger;
+                    $('#contacts').append('<li>' + item.Name + '</li>');
+                });
+            });
+        });
+
+        $('#saveContact').click(function () {
+            $.post("api/contact",
+                $("#saveContactForm").serialize(),
+                function (value) {
+                    $('#contacts').append('<li>' + value.Name + '</li>');
+                },
+                "json"
+            );
+        });
+    </script>
+}

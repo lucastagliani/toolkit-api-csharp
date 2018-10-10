@@ -7,14 +7,14 @@ using System.Net.Http.Headers;
 
 namespace toolkit_api_csharp.Configuration
 {
-    public static class HelloWebAPIConfig
+    public static class WebAPIConfig
     {
         public static void Register(HttpConfiguration config)
         {
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            // TODO: review what really is need here.
+            // TODO: review what really is needed here.
             config.Formatters.Add(new BrowserJsonFormatter());
             //config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/json"));
 

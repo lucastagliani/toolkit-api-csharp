@@ -20,7 +20,7 @@ namespace toolkit_api_csharp
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.MediaTypeMappings
                 .Add(new RequestHeaderMapping("Accept", "text/html", StringComparison.InvariantCultureIgnoreCase, true, "application/json"));
 
-            GlobalConfiguration.Configure(HelloWebAPIConfig.Register);
+            GlobalConfiguration.Configure(WebAPIConfig.Register);
         }
 
         protected void Session_Start(object sender, EventArgs e)
